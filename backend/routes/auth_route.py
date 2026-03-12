@@ -1,0 +1,10 @@
+from flask import Flask,request,jsonify,Blueprint
+from controllers.auth_controller import register_user
+
+
+auth_bp=Blueprint("auth",__name__)
+auth_bp.route("/register",methods=["POST"])(register_user)
+
+
+    
+
