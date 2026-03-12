@@ -11,3 +11,4 @@ __pycache__/
 seed_data/
 migrations/
 node_modules/
+*.env
