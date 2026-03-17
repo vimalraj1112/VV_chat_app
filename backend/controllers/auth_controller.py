@@ -1,7 +1,9 @@
-from flask import Flask,jsonify,request
+from flask import Flask,jsonify,request,make_response
 from validators import email
 from models.auth_model import create_user,get_user_by_email
 from werkzeug.security import check_password_hash
+from flask_jwt_extended import create_access_token
+from datetime import timedelta
 
 def register_user():
 
@@ -87,9 +89,21 @@ def login_user():
             "success":False,
             "message":"invalid credential",
             "data":None
-        })  
+        }) 
+
+
+
+    token = create_access_token(
+        identity=user["id"],          
+        additional_claims={
+            "name": user["username"],
+            "email": user["email"]
+        },
+        expires_delta=timedelta(days=7)  
+    ) 
+
     
-    return jsonify({
+    resp = make_response( jsonify({
         "success":True,
         "message":"Login successfully",
         "data":{
@@ -97,7 +111,17 @@ def login_user():
             "username":user["username"],
             "email":user["email"]
         }
-    })
+    }))
+
+    resp.set_cookie(
+        "access_token",
+        token,
+        httponly=True,
+        max_age=604800,
+        secure=False,
+        samesite='Lax'
+    )
+    return resp
     
 
     
