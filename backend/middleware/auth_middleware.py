@@ -8,8 +8,10 @@ def jwt_required_custom(fn):
     @wraps(fn)
     def wrapper(*args, **kwargs):
         try:
-            verify_jwt_in_request(locations=["cookies"], cookie_name="access_token")
-        except Exception:
+            
+            verify_jwt_in_request()
+        except Exception as e:
+            print(e)
             return jsonify({
                 "success":False,
                 "message":"token missing or invalid",

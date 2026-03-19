@@ -23,7 +23,7 @@ def create_user(username, email, password):
         conn.close()
 
         return True,{
-            "user":username,
+            "username":username,
             "email":email,
             "password":hash_password,
             "id":user_id

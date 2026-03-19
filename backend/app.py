@@ -4,17 +4,21 @@ from dotenv import load_dotenv
 import os
 from routes.auth_route import auth_bp
 from flask_jwt_extended import JWTManager
+from routes.user_route import users_bp
 
 
 
 app=Flask(__name__)
 
 app.config["JWT_SECRET_KEY"]=os.getenv("JWT_SECRET_KEY")
+app.config["JWT_TOKEN_LOCATION"] = ["cookies"]
+app.config["JWT_ACCESS_COOKIE_NAME"] = "access_token"
 
 jwt = JWTManager(app)
 
 
 app.register_blueprint(auth_bp,url_prefix="/auth")
+app.register_blueprint(users_bp,url_prefix="/users")
 
 
 

@@ -36,20 +36,48 @@ def register_user():
 
         }),400
     
-    result,message=create_user(name,email_id,password)
+    result,user=create_user(name,email_id,password)
     if result == False:
         return jsonify({
             "success":False,
-            "message":message,
+            "message":user,
             "data":None
         }),400
     
+    token = create_access_token(
+        identity=user["id"],          
+        additional_claims={
+            "name": user["username"],
+            "email": user["email"]
+        },
+        expires_delta=timedelta(days=7)  
+    ) 
+
     
-    return jsonify({
+    resp = make_response( jsonify({
         "success":True,
-        "message":"User Register Successfully",
-        "data":message
-    }),201
+        "message":"Register successfully",
+        "data":{
+            "id":user['id'],
+            "username":user["username"],
+            "email":user["email"]
+        }
+    }))
+
+    resp.set_cookie(
+        "access_token",
+        token,
+        httponly=True,
+        max_age=604800,
+        secure=False,
+        samesite='Lax'
+    )
+    
+    return resp
+    
+    
+
+
 
 def login_user():
 
@@ -122,6 +150,21 @@ def login_user():
         samesite='Lax'
     )
     return resp
+
+def logout_user():
+    resp = make_response(jsonify({
+        "success":True,
+        "message":"logout successfully",
+        "data":None
+    }))
+    resp.set_cookie(
+        "access_token",
+        ""
+        
+    )
+    return resp
+
+
     
 
     
