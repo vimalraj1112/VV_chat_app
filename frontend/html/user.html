@@ -42,27 +42,23 @@
             tabindex="-1"
             class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
-            <li><a href="./html/login.html">Login</a></li>
+            <li><a>Item 1</a></li>
             <li>
-              <a href="./html/register.html">Register</a>
+              <a>Parent</a>
+              <ul class="p-2">
+                <li><a>Submenu 1</a></li>
+                <li><a>Submenu 2</a></li>
+              </ul>
             </li>
-            <li><a href="./html/user.html">Chats</a></li>
+            <li><a>Item 3</a></li>
           </ul>
         </div>
 
-        <a class="btn btn-ghost text-xl"
+        <a class="btn btn-ghost text-xl" href="../index.html"
           ><i data-lucide="message-circle-more"></i>VVchatApp</a
         >
       </div>
-      <div class="navbar-center hidden lg:flex">
-        <ul class="menu menu-horizontal px-1">
-          <li><a href="./html/login.html" class="btn btn-ghost">Login</a></li>
-          <li>
-            <a href="./html/register.html" class="btn btn-ghost">Register</a>
-          </li>
-          <li><a href="./html/user.html" class="btn btn-ghost">Chats</a></li>
-        </ul>
-      </div>
+
       <div class="navbar-end">
         <label class="toggle text-base-content">
           <input type="checkbox" value="dark" class="theme-controller" />
@@ -109,31 +105,80 @@
         </label>
       </div>
     </div>
-
     <!-- navbar end -->
-    <!-- home section -->
-    <div class="grid grid-cols-2 w-[1000px] mx-auto h-[85vh]">
-      <div class="flex flex-col justify-center">
-        <h1 class="text-7xl font-bold">VVchatApp</h1>
-        <p class="mt-10">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum
-          saepe beatae molestias numquam iure vel dolores aliquid vero quaerat
-          rem magni eaque non perspiciatis labore tempora ut voluptatibus, hic
-          molestiae!
-        </p>
-        <div class="flex flex-col gap-3 mt-3">
-          <a class="btn btn-accent btn-outline" href="./html/login.html"
-            >Login</a
-          >
-          <a href="./html/register.html" class="btn btn-accent btn-outline"
-            >Register</a
-          >
-        </div>
-      </div>
+    <div class="card w-4/6 mx-auto">
+      <div class="card-body">
+        <ul class="list bg-base-100 rounded-box shadow-md">
+          <li class="p-4 pb-2 text-xs opacity-60 tracking-wide">
+            Select the User to Start Conversation
+          </li>
 
-      <img src="./images/undraw_letter_ombg.svg" class="w-[300px] mx-auto" />
+          <li>
+            <a href="./chat.html" class="list-row">
+              <div>
+                <img class="size-10 rounded-box" src="../images/images.jpg" />
+              </div>
+              <div>
+                <div>Sabrino Gardener</div>
+                <div class="text-xs uppercase font-semibold opacity-60">
+                  Cappuccino
+                </div>
+              </div>
+
+              <button class="btn btn-square btn-ghost">
+                <i data-lucide="message-square-more" class="w-4"></i>
+              </button>
+            </a>
+          </li>
+          <li class="list-row">
+            <div>
+              <img class="size-10 rounded-box" src="../images/images.jpg" />
+            </div>
+            <div>
+              <div>Sabrino Gardener</div>
+              <div class="text-xs uppercase font-semibold opacity-60">
+                Cappuccino
+              </div>
+            </div>
+
+            <button class="btn btn-square btn-ghost">
+              <i data-lucide="message-square-more" class="w-4"></i>
+            </button>
+          </li>
+          <li class="list-row">
+            <div>
+              <img class="size-10 rounded-box" src="../images/images.jpg" />
+            </div>
+            <div>
+              <div>Sabrino Gardener</div>
+              <div class="text-xs uppercase font-semibold opacity-60">
+                Cappuccino
+              </div>
+            </div>
+
+            <button class="btn btn-square btn-ghost">
+              <i data-lucide="message-square-more" class="w-4"></i>
+            </button>
+          </li>
+          <li class="list-row">
+            <div>
+              <img class="size-10 rounded-box" src="../images/images.jpg" />
+            </div>
+            <div>
+              <div>Sabrino Gardener</div>
+              <div class="text-xs uppercase font-semibold opacity-60">
+                Cappuccino
+              </div>
+            </div>
+
+            <button class="btn btn-square btn-ghost">
+              <i data-lucide="message-square-more" class="w-4"></i>
+            </button>
+          </li>
+        </ul>
+      </div>
     </div>
-    <!-- home section end -->
+
     <!-- icon start -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>

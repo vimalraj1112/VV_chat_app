@@ -42,27 +42,23 @@
             tabindex="-1"
             class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
-            <li><a href="./html/login.html">Login</a></li>
+            <li><a>Item 1</a></li>
             <li>
-              <a href="./html/register.html">Register</a>
+              <a>Parent</a>
+              <ul class="p-2">
+                <li><a>Submenu 1</a></li>
+                <li><a>Submenu 2</a></li>
+              </ul>
             </li>
-            <li><a href="./html/user.html">Chats</a></li>
+            <li><a>Item 3</a></li>
           </ul>
         </div>
 
-        <a class="btn btn-ghost text-xl"
+        <a class="btn btn-ghost text-xl" href="../index.html"
           ><i data-lucide="message-circle-more"></i>VVchatApp</a
         >
       </div>
-      <div class="navbar-center hidden lg:flex">
-        <ul class="menu menu-horizontal px-1">
-          <li><a href="./html/login.html" class="btn btn-ghost">Login</a></li>
-          <li>
-            <a href="./html/register.html" class="btn btn-ghost">Register</a>
-          </li>
-          <li><a href="./html/user.html" class="btn btn-ghost">Chats</a></li>
-        </ul>
-      </div>
+
       <div class="navbar-end">
         <label class="toggle text-base-content">
           <input type="checkbox" value="dark" class="theme-controller" />
@@ -109,31 +105,45 @@
         </label>
       </div>
     </div>
-
     <!-- navbar end -->
-    <!-- home section -->
-    <div class="grid grid-cols-2 w-[1000px] mx-auto h-[85vh]">
-      <div class="flex flex-col justify-center">
-        <h1 class="text-7xl font-bold">VVchatApp</h1>
-        <p class="mt-10">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum
-          saepe beatae molestias numquam iure vel dolores aliquid vero quaerat
-          rem magni eaque non perspiciatis labore tempora ut voluptatibus, hic
-          molestiae!
-        </p>
-        <div class="flex flex-col gap-3 mt-3">
-          <a class="btn btn-accent btn-outline" href="./html/login.html"
-            >Login</a
-          >
-          <a href="./html/register.html" class="btn btn-accent btn-outline"
-            >Register</a
-          >
+    <!-- register section -->
+    <div class="flex justify-center items-center h-[90vh]">
+      <div class="card w-96 bg-base-100 border border-accent">
+        <div class="card-body">
+          <h2 class="font-bold text-2xl text-center">Login</h2>
+
+          <div>
+            <label for="Email-ID" class="flex gap-1"
+              ><i data-lucide="mail" class="w-3"></i> Email-ID</label
+            >
+            <input
+              type="text"
+              class="input input-accent mt-2 cursor-pointer"
+              placeholder="Email-ID"
+            />
+          </div>
+          <div>
+            <label for="Password" class="flex gap-1"
+              ><i data-lucide="key-round" class="w-4"></i> Password</label
+            >
+            <input
+              type="text"
+              class="input input-accent mt-2 cursor-pointer"
+              placeholder="Password"
+            />
+
+            <p class="mt-3">
+              Don't Have an Account?
+              <a href="./register.html" class="underline text-primary"
+                >Register</a
+              >
+            </p>
+          </div>
+          <button class="btn btn-accent w-[95%] mt-3">Login</button>
         </div>
       </div>
-
-      <img src="./images/undraw_letter_ombg.svg" class="w-[300px] mx-auto" />
     </div>
-    <!-- home section end -->
+    <!-- registersection end -->
     <!-- icon start -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
