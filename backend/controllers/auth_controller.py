@@ -12,15 +12,19 @@ def register_user():
     name=data.get("name")
     email_id=data.get("email")
     password=data.get("password")
+    
 
     if not email_id or not name or not password:
+        
         return jsonify({
             "success":False,
             "message":"Missing required field",
             "data":None
         }),400
+    
+    
 
-    if not email(email_id) or len(name)<=3 or len(password)>8:
+    if not email(email_id) or len(name)<=3 or len(password)<8:
         return jsonify({
             "success":False,
             "message":"Invalid credentials",
