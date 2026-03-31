@@ -9,6 +9,7 @@ async function login_user(e) {
     headers: {
       "Content-Type": "application/json",
     },
+    credentials: "include",
     body: JSON.stringify(body),
   });
   const data = await res.json();

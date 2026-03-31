@@ -4,7 +4,7 @@ from models.users_model import find_all_users
 def get_users():
     try:
         users = find_all_users()
-        print(users)
+        
 
         if not users:
             return jsonify({
