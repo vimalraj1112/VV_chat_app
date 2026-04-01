@@ -18,6 +18,6 @@ async function register_user(e) {
     return;
   } else {
     alert(data.message || "Successfully");
-    window.open("../html/user.html");
+    location.href = "../html/user.html";
   }
 }

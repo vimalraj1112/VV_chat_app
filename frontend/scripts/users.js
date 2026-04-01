@@ -3,10 +3,16 @@ async function get_users() {
     credentials: "include",
   });
   const data = await res.json();
+  if (res.status == 401) {
+    location.href = "../html/login.html";
+    console.log("he");
+    return;
+  }
   if (!data.success) {
     alert(data.message || "failed");
     return;
   }
+
   const users = data.data;
   render_users(users);
 }
@@ -37,5 +43,16 @@ function render_users(users) {
     li.innerHTML = listuser;
     userlist.appendChild(li);
   }
+}
+async function logout() {
+  const res = await fetch("http://127.0.0.1:5000/auth/logout", {
+    credentials: "include",
+    method: "POST",
+  });
+  if (!res.ok) {
+    alert("failed");
+    return;
+  }
+  location.href = "../index.html";
 }
 get_users();
