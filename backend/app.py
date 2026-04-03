@@ -6,6 +6,7 @@ from routes.auth_route import auth_bp
 from flask_jwt_extended import JWTManager
 from routes.user_route import users_bp
 from flask_cors import CORS
+from routes.msgs_routes import msgs_bp
 
 
 
@@ -17,12 +18,14 @@ CORS(app,
 app.config["JWT_SECRET_KEY"]=os.getenv("JWT_SECRET_KEY")
 app.config["JWT_TOKEN_LOCATION"] = ["cookies"]
 app.config["JWT_ACCESS_COOKIE_NAME"] = "access_token"
+app.config["JWT_COOKIE_CSRF_PROTECT"] = False
 
 jwt = JWTManager(app)
 
 
 app.register_blueprint(auth_bp,url_prefix="/auth")
 app.register_blueprint(users_bp,url_prefix="/users")
+app.register_blueprint(msgs_bp,url_prefix="/messages")
 
 
 

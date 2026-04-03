@@ -64,3 +64,23 @@ def get_user_by_email(email):
     except Exception as e:
         
         return None
+
+def get_user_by_id():
+    try:
+        conn=get_db_connection()
+        cursor=conn.cursor(dictionary=True)
+
+        querry="SELECT * FROM USERS WHERE id=%s"
+        value=(id)
+
+        cursor.execute(querry,value)
+        user=cursor.fetchone()
+
+        cursor.close()
+        conn.commit()
+
+        return user
+    
+    except Exception as e:
+        return None
+

@@ -1,6 +1,9 @@
 from functools import wraps
-from flask_jwt_extended import verify_jwt_in_request,get_jwt
-from flask import Flask,request,jsonify
+from flask_jwt_extended import verify_jwt_in_request,get_jwt_identity
+from flask import Flask,request,jsonify,g
+from models.auth_model import get_user_by_id
+
+
 
 
 
@@ -10,8 +13,15 @@ def jwt_required_custom(fn):
         try:
             
             verify_jwt_in_request()
+            
+            
+            g.user_id=get_jwt_identity()
+        
+            
+
         except Exception as e:
             print(e)
+            g.user_id=None
             return jsonify({
                 "success":False,
                 "message":"token missing or invalid",
