@@ -1,7 +1,7 @@
 from functools import wraps
 from flask_jwt_extended import verify_jwt_in_request,get_jwt_identity
 from flask import Flask,request,jsonify,g
-from models.auth_model import get_user_by_id
+
 
 
 

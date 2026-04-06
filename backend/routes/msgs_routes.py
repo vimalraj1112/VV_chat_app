@@ -1,5 +1,5 @@
 from flask import Flask,Blueprint
-from backend.controllers.msg_controller import send_msg
+from controllers.msg_controller import send_msg
 from middleware.auth_middleware import jwt_required_custom
 
 msgs_bp=Blueprint("messages",__name__)

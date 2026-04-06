@@ -65,13 +65,13 @@ def get_user_by_email(email):
         
         return None
 
-def get_user_by_id():
+def get_user_by_id(id:str):
     try:
         conn=get_db_connection()
         cursor=conn.cursor(dictionary=True)
 
         querry="SELECT * FROM USERS WHERE id=%s"
-        value=(id)
+        value=(id,)
 
         cursor.execute(querry,value)
         user=cursor.fetchone()
