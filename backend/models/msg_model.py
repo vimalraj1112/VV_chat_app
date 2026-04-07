@@ -1,7 +1,7 @@
 from flask import Flask
 from config.db import get_db_connection
 import uuid
-from auth_model import get_user_by_id
+from models.auth_model import get_user_by_id
 
 def create_chat(conn):
     
@@ -92,7 +92,7 @@ def create_message(chat_id:str,content:str,sender_id:str):
 
     return id
 
-def get_user_id(user_id:str):
+def get_user_chat_ids(user_id:str):
     conn=get_db_connection()
     cursor=conn.cursor(dictionary=True)
 
@@ -108,7 +108,7 @@ def get_user_id(user_id:str):
 
     chat_ids=[]
     for row in rows:
-        chat_ids.append(row["chat_id"])
+        chat_ids.append(row["CHAT_ID"])
     return chat_ids
 
 def get_other_participants(chat_id:str,user_id:str):
@@ -118,8 +118,9 @@ def get_other_participants(chat_id:str,user_id:str):
     query="SELECT * FROM PARTICIPANTS WHERE CHAT_ID=%s AND USER_ID!=%s"
     values=(chat_id,user_id)
 
-    row=cursor.fetchone()
+    
     cursor.execute(query,values)
+    row=cursor.fetchone()
     conn.commit()
 
     cursor.close()
@@ -155,6 +156,42 @@ SELECT * FROM MESSAGES WHERE CHAT_ID=%s ORDER BY CREATED_AT DESC LIMIT 1'''
         "content":row["content"],
         "created_at":row["created_at"]
     }
+
+def get_chat_message(chat_id:str):
+    conn=get_db_connection()
+    cursor=conn.cursor(dictionary=True)
+
+    query="SELECT * FROM MESSAGES WHERE CHAT_ID=%s ORDER BY CREATED_AT LIMIT 50"
+    values=(chat_id,)
+
+    cursor.execute(query,values)
+    messages=cursor.fetchall()
+    conn.commit()
+
+    cursor.close()
+    conn.close()
+
+    return messages
+
+def is_user_participants(chat_id:str,user_id:str):
+    conn=get_db_connection()
+    cursor=conn.cursor(dictionary=True)
+
+    query="SELECT * FROM PARTICIPANTS WHERE CHAT_ID=%s AND USER_ID=%s LIMIT 1"
+    values=(chat_id,user_id)
+
+    cursor.execute(query,values)
+    chats=cursor.fetchone()
+    conn.commit()
+
+    cursor.close()
+    conn.close()
+
+    if chats:
+        return True
+    else: 
+        return False
+
 
     
 

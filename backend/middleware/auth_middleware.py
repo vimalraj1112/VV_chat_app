@@ -27,6 +27,7 @@ def jwt_required_custom(fn):
                 "message":"token missing or invalid",
                 "data":None
             }),401
+        print(args,kwargs)
         return fn(*args, **kwargs)
         
 
