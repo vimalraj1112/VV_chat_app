@@ -119,5 +119,3 @@ def get_msgs(chat_id):
             "data":None
         }),500
 
-
-           

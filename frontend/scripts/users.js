@@ -14,10 +14,10 @@ async function get_users() {
   }
 
   const users = data.data;
-  render_users(users);
+  render_chats(users);
 }
 
-function render_users(users) {
+function render_chats(users) {
   const userlist = document.getElementById("user-list");
 
   for (let i = 0; i < users.length; i++) {

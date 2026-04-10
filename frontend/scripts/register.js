@@ -18,6 +18,6 @@ async function register_user(e) {
     return;
   } else {
     alert(data.message || "Successfully");
-    location.href = "../html/user.html";
+    location.href = "../html/chat_list.html";
   }
 }

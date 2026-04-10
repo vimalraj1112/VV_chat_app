@@ -152,9 +152,10 @@ SELECT * FROM MESSAGES WHERE CHAT_ID=%s ORDER BY CREATED_AT DESC LIMIT 1'''
 
     if not row:
         return None
+    
     return {
         "content":row["content"],
-        "created_at":row["created_at"]
+        "created_at":row["created_at"].strftime('%Y-%m-%d %H:%M:%S')
     }
 
 def get_chat_message(chat_id:str):

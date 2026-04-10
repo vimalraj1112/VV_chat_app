@@ -54,6 +54,9 @@
           ><i data-lucide="message-circle-more"></i>VVchatApp</a
         >
       </div>
+      <div class="navbar-center">
+        <button class="btn btn-ghost" onclick="logout()">Logout</button>
+      </div>
 
       <div class="navbar-end">
         <label class="toggle text-base-content">
@@ -102,37 +105,18 @@
       </div>
     </div>
     <!-- navbar end -->
-    <div class="card w-3/6 shadow-sm mx-auto">
+    <div class="card w-4/6 mx-auto">
       <div class="card-body">
-        <div class="flex justify-center items-center gap-3">
-          <a href="./chat_list.html"> <i data-lucide="arrow-left"></i></a>
-          <div class="avatar">
-            <div class="w-11 rounded-full">
-              <img
-                src="https://img.daisyui.com/images/profile/demo/yellingcat@192.webp"
-              />
-            </div>
-          </div>
-          <p id="name" class="font-bold text-xl">vimal</p>
-        </div>
-        <div class="h-[400px] overflow-auto" id="chat_screen"></div>
-        <form class="flex" onsubmit="send_message(event)">
-          <input
-            type="text"
-            class="input focus:outline-none w-full"
-            placeholder="Type"
-            id="msg_input"
-            autocomplete="off"
-          />
-          <button class="btn btn-square btn btn-accent btn-soft">
-            <i data-lucide="send-horizontal" class="size-5"></i>
-          </button>
-        </form>
+        <ul id="chat_list" class="list bg-base-100 rounded-box shadow-md">
+          <li class="p-4 pb-2 text-xs opacity-60 tracking-wide">
+            Select the User to Start Conversation
+          </li>
+        </ul>
       </div>
     </div>
+    <script src="../scripts/chat_list.js"></script>
 
     <!-- icon start -->
-    <script src="../scripts/chat.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
       lucide.createIcons();

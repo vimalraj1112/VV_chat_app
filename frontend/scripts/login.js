@@ -17,6 +17,6 @@ async function login_user(e) {
     alert(data.message || "failed");
   } else {
     alert(data.message || "Successfully Login");
-    location.href = "../html/user.html";
+    location.href = "../html/chat_list.html";
   }
 }
